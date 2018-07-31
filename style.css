@@ -1,0 +1,718 @@
+/*
+Theme Name: Custom Resume
+Author: Gal Grünfeld
+Author URI: http://stackoverflow.com/users/5094787/gal-grünfeld
+Description: a custom resume theme
+Version: 0.1
+Tags: custom, resume, CV, responsive
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*region (0) General*/
+
+html {
+    margin: 0px !important;
+    font-size: 1vmax;
+    text-rendering: optimizeLegibility;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: CMU Concrete !important;
+}
+.unselectable {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+.social_icons_section a {
+    text-decoration: none;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    font-size: 1.25vmax;
+    color: white;
+    /*
+    text-shadow: 0 0 7px black;
+    */
+}
+
+.card {
+    transition: all 200ms ease-in-out !important;
+    width: 12.5rem;
+}
+.card:hover {
+    -webkit-transition: transform 200ms ease-in-out;
+    -webkit-transform: scale(1.1);
+    -ms-transition: transform 200ms ease-in-out;
+    -ms-transform: scale(1.1);
+    -moz-transition: transform 200ms ease-in-out;
+    -moz-transform: scale(1.1);
+    transition: transform 200ms ease-in-out;
+    transform: scale(1.1);
+}
+
+    /*region (0.1) custom .btn styles*/
+
+    .btn {
+        border-radius: 2px !important; /*To override Ultimo WP's buttons border radius*/
+    }
+
+    .btn.small {
+        padding: 0 1rem;
+        font-size: 0.75rem;
+        outline: 0;
+    }
+
+    .btn.no-shadows,
+    .btn-large.no-shadows,
+    .btn-flat.no-shadows {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    /*endregion*/
+
+html:not(.wp-toolbar) {
+    padding-top: 0 !important;
+}
+
+/*endregion*/
+
+
+/*region (1) Navigation */
+
+#resume_action_button_container {
+    padding-top: 0;
+    right: 0;
+
+    /*
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    */
+}
+#menu_pages_container {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    background-color: #020262;
+    color: white;
+    height: 7.5vh;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+#menu-pages {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+}
+#menu-pages .menu-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    -o-transition: background-color 0.2s ease-in-out; /* opera */
+    -ms-transition: background-color 0.2s ease-in-out; /* IE 10 */
+    -moz-transition: background-color 0.2s ease-in-out; /* Firefox */
+    -webkit-transition: background-color 0.2s ease-in-out; /*safari and chrome */
+}
+#menu-pages .menu-item:hover {
+    cursor: pointer;
+    background-color: mediumblue;
+}
+#menu-pages .menu-item a {
+    text-decoration: none;
+    text-align: center;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    height: inherit;
+    width: inherit;
+    display: flex;
+    align-items: center;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+.fixed-menu { /* class to the Pages menu fixed */
+        position: fixed !important;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+        /*
+        box-shadow: 0 1px 7px 2px rgba(0,0,0,0.4);
+        */
+        box-shadow: rgba(0,0,0,0.2) 0 2px 6px 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+/*endregion*/
+
+
+/*Note to self: Replace between the order of (1) and (2)*/
+/*region (2) First Screen */
+
+header {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    /*region Prevent overflow from gif*/
+    overflow-x: hidden;
+    /*endregion*/
+
+}
+
+    /*region (2.1) Background image/gif*/
+    #introduction_background_image {
+        height: 100vh;
+        width: 100%;
+        position: absolute;
+        z-index: 0;
+        content: "";
+        background-image:url('style/images/math_gif.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-x: center;
+        filter: brightness(75%) blur(5px) contrast(150%);
+        z-index: -1;
+    }
+    #introduction_background_image_cover {
+        z-index: 0;
+        content: "";
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 128, 0.75); /* hex #000080 at 0.75 opacity */
+    }
+    /*endregion*/
+
+    /*region (2.2)  Profile Section*/
+    #profile_section {
+        position: absolute;
+        margin: 0;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255,255,255,0.2);
+    }
+    #profile_section .card-content {
+        padding: 24px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #profile_items_container {
+        text-align: center;
+    }
+    .profile-picture {
+        height: 20vh;
+        width: 20vh;
+        border-radius:100%;
+    }
+    #profile_items_container {
+        margin-bottom: 16px;
+    }
+    #profile_items_container .profile-picture {
+        background-color: white !important;
+    }
+    #profile_full_name {
+        margin: 0;
+        font-size: 5vh;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 28px black;
+    }
+    #profile_description_tags {
+        margin: 0;
+        font-size: 2.25vh;
+        line-height:3.5vh;
+        font-style: italic;
+        color: white;
+        text-shadow: 0 0 14px black;
+    }
+    #profile_description_tags .profile-description-item {
+        margin-left: 0.5vw;
+        margin-right: 0.5vw;
+    }
+    #profile_section .card-action {
+        width: 85%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border-top-color: rgba(255,255,255,0.4);
+    }
+    #profile_section .social_icons_section {
+        z-index: 1;
+        bottom: 5vh;
+    }
+    #profile_section .social_icons_section a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+        /*
+        color: #1A237E;
+        */
+        /* Indigo 900 */
+        color: white;
+    }
+    #TeX_StackExchange_icon{
+        font-style: normal !important;
+        margin: 0;
+        margin-left: 0.35vw !important;
+    }
+    #short_about_container {
+        /*
+        height: 27.5vh;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        z-index: 0;
+
+        width: 85%;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        border-top: 1px solid rgba(255,255,255,0.4);
+    }
+    #short_about {
+        font-size: 2.5vmin;
+        margin-bottom: 0;
+        margin-top: 0;
+        color: white;
+        /*
+        text-shadow: 0 0 7px black;
+        */
+        text-shadow: 0 2px 1px rgba(0,0,0,0.3);
+    }
+    /*endregion*/
+
+/*endregion (2) First Screen */
+
+
+/*region (3) Pages */
+
+#pages-container {
+    background-color: white;
+}
+#pages-container p {
+    font-size: 1.5rem   ;
+}
+.page {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 2.5vh;
+    padding-bottom: 2.5vh;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+    /* Commented out ∵ might not be necessary ∧ it doesn't solving what it was meant for (transition times of cards in the timeline) */
+    /*region (3.0) Timeline */
+    /*
+    .timeline . card {
+        -webkit-transition: all 1s ease-in-out 0s, -webkit-transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s !important;
+        transition: all 1s ease-in-out 0s, transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s !important;
+    }
+    */
+
+    /*endregion*/
+
+    /*region (3.1) About Page */
+    #about.page {
+        background-color: #1a237e; /* Blue 900 */
+        color: #E8EAF5; /* Indigo 50 */
+    }
+    .skills-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .cards-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .skills-container .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .cards-container .card-panel, .cards-container .card  {
+        margin-right: 1vw;
+        margin-left: 1vw;
+        /*background-color: #3949AB !important; */ /* Indigo 600 */
+    }
+    .card-panel {
+        width: fit-content;
+    }
+    .skill-progress {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .skill-progress  .skill-icon {
+        position: absolute !important;
+        font-size: 200%;
+    }
+    #javascript.skill-progress .skill-icon {
+        font-family: Consolas;
+        font-weight: bold;
+    }
+    .skill .card-content, .coding-practice .card-content {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center;
+        height: 20vh;
+    }
+    .coding-practice .card-title {
+        text-align: center;
+    }
+    .skill .card-action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 8vh;
+    }
+    .skill-description {
+        margin: 0;
+    }
+    .skill-description li {
+        text-align: center;
+    }
+    .coding-practice-description {
+        font-size:1rem !important;
+        margin: 0;
+        text-align: center;
+    }
+    /*endregion*/
+
+    /*region (3.2) Resume Page */
+    #resume.page {
+        background-color: #e3f2fd; /* Blue 50 */
+    }
+    /*endregion*/
+
+    /*region (3.3) Recommendations Page */
+    #recommendations.page {
+        background-color: #3e2723; /* Brown 900 */
+    }
+    #recommendations_container {
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .recommendation {
+        width: 50vw;
+    }
+    .recommender-profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 12.5rem;
+        padding: 24px;
+        border-right: 1px solid rgba(160,160,160,0.4);
+        font-size: 1.25rem;
+    }
+    .recommender-profile-picture-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .recommender-profile-picture {
+        height: 10vh;
+        width: 10vh;
+        align-self: flex-end;
+        margin-bottom: 2.5vh;
+        border-radius: 100%;
+    }
+    .recommender-personal-info {
+        display: flex;
+        flex-direction: column;
+        color: #616161 !important; /* Gray 700 */
+        font-style: italic;
+    }
+    .recommender-personal-info span {
+        line-height: 1.25;
+        text-align: end;
+    }
+    .recommender-personal-info span:not(:last-child) {
+        margin-bottom: 0.75vh;
+    }
+    .recommendation-text {
+        font-size: 1.5rem;
+        color: black;
+        font-style: italic;
+    }
+    .recommendation-text-container .read-all {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        margin-right: 24px;
+        margin-left: 24px;
+        text-align: center;
+    }
+    .recommendation-text-container .read-all a {
+        margin: 0 !important;
+    }
+    /*endregion*/
+
+    /*region (3.4) Resume File Page */
+    #resume_file.page {
+    background-color: #212121;
+    }
+    #resume_file.page #resume_file_embedded {
+        width: 100%;
+        height: 85vh;
+    }
+    /*endregion*/
+
+    /*region (3.5) Contact Page */
+    #contact.page {
+        background-color: #43A047; /* Green 600 */
+        background-color: #1B5E20; /* Green 900 */
+    }
+    #contact.page #message_me_title {
+        color: #1b5e20 !important;
+        color: #2e7d32 !important;
+    }
+    #contact_form_container {
+        width: 100%;
+    }
+    #contact_form_container #message_me_title {
+        display: flex;
+        align-items: center;
+        line-height: 100% !important;
+    }
+    #contact_form {
+        padding-left: 1.25vw;
+        padding-right: 1.25vw;
+        padding-top: 1.25vh;
+        padding-bottom: 1.2vh;
+    }
+    #contact_form .row {
+        padding-top: 1.5vh !important;
+        padding-bottom: 1.5vh !important;
+        margin: 0 !important;
+    }
+    #contact_form .s6 {
+        display: flex;
+    }
+    #contact_form .input-field{
+        display: flex;
+        align-items: center;
+        margin-top: 0 !important;
+    }
+    #contact_form input:not([type]),
+    #contact_form input[type=text],
+    #contact_form input[type=password],
+    #contact_form input[type=email],
+    #contact_form input[type=url],
+    #contact_form input[type=time],
+    #contact_form input[type=date],
+    #contact_form input[type=datetime],
+    #contact_form input[type=datetime-local],
+    #contact_form input[type=tel],
+    #contact_form input[type=number],
+    #contact_form input[type=search],
+    #contact_form input[type=file],
+    #contact_form textarea.materialize-textarea {
+        margin-bottom: 0 !important;
+        color: #0f3211;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    #contact_form textarea.materialize-textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #2e7d32 !important; /* Green 800 */
+        }
+    #contact_form textarea.materialize-textarea::-moz-placeholder { /* Firefox 19+ */
+            color: #2e7d32 !important; /* Green 800 */
+        }
+    #contact_form textarea.materialize-textarea:-ms-input-placeholder { /* IE 10+ */
+            color: #2e7d32 !important; /* Green 800 */
+        }
+    #contact_form textarea.materialize-textarea:-moz-placeholder { /* Firefox 18- */
+            color: #2e7d32 !important; /* Green 800 */
+        }
+
+    #contact_form input,
+    #contact_form textarea,
+    #contact_form label,
+    #contact_form .validate ~ label,
+    #contact_form .autocomplete-content {
+
+        border-color: #0f3211;
+
+
+    }
+
+    #contact_form input:not([type]):focus:not([readonly]),
+    #contact_form input[type=text]:focus:not([readonly]),
+    #contact_form input[type=password]:focus:not([readonly]),
+    #contact_form input[type=email]:focus:not([readonly]),
+    #contact_form input[type=url]:focus:not([readonly]),
+    #contact_form input[type=time]:focus:not([readonly]),
+    #contact_form input[type=date]:focus:not([readonly]),
+    #contact_form input[type=datetime]:focus:not([readonly]),
+    #contact_form input[type=datetime-local]:focus:not([readonly]),
+    #contact_form input[type=tel]:focus:not([readonly]),
+    #contact_form input[type=number]:focus:not([readonly]),
+    #contact_form input[type=search]:focus:not([readonly]),
+    #contact_form textarea.materialize-textarea:focus:not([readonly]) {
+        border-bottom: 1px solid #0f3211 !important;
+        box-shadow: 0 1px 0 0 #0f3211 !important;
+    }
+
+    /* Make this have a white border color after being clicked, and return to teal color after file selection window closes */
+    #contact_form .input-field .prefix {
+        color: #2e7d32 !important; /* Green 800 */
+    }
+    #contact_form .input-field .textarea-prefix {
+        top: 1vh;
+    }
+
+    #contact_form .input-field .prefix.active {
+        color: #0f3211 !important;
+    }
+    #contact_form .input-field label {
+        color: #388e3c !important; /* Green 700 */
+    }
+    #contact_form .input-field label.active {
+        color: #0f3211 !important; /* Green 700 */
+    }
+    #contact_form #file_upload_button {
+        background-color: #2e7d32 !important; /* Green 800 */
+    }
+    #contact_form #file_upload_button .prefix {
+        color: #1b5e20 !important; /*Green 900 */
+    }
+
+    /* Doesn't work te way I want it to. Make the color of the button change after reaching to it by Tab */
+    #contact_form #file_upload_button input:focus {
+        background-color: #0f3211 !important;
+    }
+
+    #contact_form .file-path {
+        pointer-events: none;
+    }
+    #contact_form #submit_button {
+        background-color: #2e7d32 !important; /* Green 800 */
+    }
+    /*endregion*/
+
+/*endregion*/
+
+
+/*region (4) Theme Errors */
+
+.error {
+    margin-top: 0 !important;
+    width: 100%;
+    min-width: 20rem;
+    background-color: rgba(183, 28, 28, 0.75) !important; /* Red 500*/
+}
+.error .card-content {
+    height: fit-content;
+    width: fit-content;
+    padding-left: 0;
+    color: white;
+}
+.error .error-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    color: white;
+    padding: 2.25rem;
+}
+.error-icon {
+    font-size: 2rem !important;
+}
+.error .card-content {
+    padding: 2rem 2rem 2rem 0 !important;
+    font-size: 1.25rem;
+}
+
+    /*region (4.1) Resume errors */
+    #resume_errors_container {
+        z-index: 1000;
+        position: fixed;
+        width: 20vw;
+        top: 2.5vh;
+        left: 2.5vh;
+    }
+    #resume_errors_container .error:not(:last-child) {
+        margin-bottom: 2.5vh; !important;
+    }
+    #resume_errors_container .error:last-child {
+        margin-bottom: 0;
+    }
+
+    /*endregion*/
+
+/*endregion*/
+
+
+/*region (6) Footer */
+footer {
+    height: 7.5vh;
+    width: 100%;
+    display: flex  !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #020262;
+    color: white;
+}
+.footer-social-arrow {
+    color: rgba(255,255,255,0.75);
+    font-size: 1.5vmax !important;
+}
+#mathjax_logo {
+    background-image: url(https://www.mathjax.org/badge/mj-logo.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 1.5rem;
+    width: auto;
+}
+footer .social_icons_section {
+    display: flex;
+    align-items: center;
+    align-self: center;
+}
+#running_mathjax_message_container {
+    font-size: 1rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.footer-social-arrow {
+    color: rgba(255,255,255,0.75);
+    font-size: 1.5vmax !important;
+}
+#mathjax_logo {
+    height: 0.75rem;
+}
+/*endregion*/

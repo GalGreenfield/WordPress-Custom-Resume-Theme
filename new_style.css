@@ -1,0 +1,58 @@
+/*
+Error: Base-level rules cannot contain the parent-selector-referencing character '&'.
+        on line 708 of new_style.scss
+
+703: 				border-bottom: 1px solid #0f3211 !important;
+704: 				box-shadow: 0 1px 0 0 #0f3211 !important;
+705: 			}
+706: 		}
+707: 	}
+708: 	&::-webkit-input-placeholder {
+709: 		color: #2e7d32 !important;
+710: 	}
+711: 	&::-moz-placeholder {
+712: 		color: #2e7d32 !important;
+713: 	}
+
+Backtrace:
+new_style.scss:708
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/selector/comma_sequence.rb:31:in `resolve_parent_refs'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:439:in `visit_rule'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `visit'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:79:in `block in with_base'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:135:in `with_frame'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:79:in `with_base'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:162:in `visit'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `map'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `visit'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:161:in `visit'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:10:in `visit'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/root_node.rb:36:in `css_tree'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:307:in `render_with_sourcemap'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:209:in `each'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin.rb:82:in `update_stylesheets'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/exec/sass_scss.rb:51:in `process_result'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/exec/base.rb:52:in `parse'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/exec/base.rb:19:in `parse!'
+E:/Programming/Ruby/Installation/lib/ruby/gems/2.4.0/gems/sass-3.5.1/bin/scss:13:in `<top (required)>'
+E:/Programming/Ruby/Installation/bin/scss:23:in `load'
+E:/Programming/Ruby/Installation/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Base-level rules cannot contain the parent-selector-referencing character '&'.\A         on line 708 of new_style.scss\A \A 703: 				border-bottom: 1px solid #0f3211 !important;\A 704: 				box-shadow: 0 1px 0 0 #0f3211 !important;\A 705: 			}\A 706: 		}\A 707: 	}\A 708: 	&::-webkit-input-placeholder {\A 709: 		color: #2e7d32 !important;\A 710: 	}\A 711: 	&::-moz-placeholder {\A 712: 		color: #2e7d32 !important;\A 713: 	}"; }
